@@ -9,6 +9,7 @@ class Facultad extends Model
 {
     use HasFactory;
     protected $table = 'facultades';
+    protected $primaryKey = 'id'; 
     protected $fillable = [
         'nombre',
         'codigo',

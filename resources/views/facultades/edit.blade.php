@@ -1,11 +1,10 @@
 @extends('facultades.layout')
 
-
 @section('content')
 <div class="container">
     <h1>Editar Facultad</h1>
 
-    <form action="{{ route('facultades.update', $facultad) }}" method="POST">
+    <form action="{{ route('facultades.update', $facultad->id) }}" method="POST">
         @csrf
         @method('PUT')
 

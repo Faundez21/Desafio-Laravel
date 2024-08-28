@@ -55,10 +55,15 @@ class FacultadController extends Controller
      * @param  \App\Models\Facultad  $facultad
      * @return \Illuminate\Http\Response
      */
-    public function show(Facultad $facultad)
+    public function show($id)
     {
+        // Buscar la facultad por ID
+        $facultad = Facultad::findOrFail($id);
+    
+        // Retornar la vista con la facultad
         return view('facultades.show', compact('facultad'));
     }
+    
 
     /**
      * Mostrar el formulario para editar la facultad especificada.
@@ -70,7 +75,7 @@ class FacultadController extends Controller
     {
         return view('facultades.edit', compact('facultad'));
     }
-
+    
     /**
      * Actualizar la facultad especificada en la base de datos.
      *
@@ -78,30 +83,37 @@ class FacultadController extends Controller
      * @param  \App\Models\Facultad  $facultad
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Facultad $facultad)
+    public function update(Request $request, $id)
     {
+        // Validación de datos
         $request->validate([
-            'nombre' => 'required',
-            'codigo' => 'required|unique:facultades,codigo,' . $facultad->id,
+            'nombre' => 'required|string|max:255',
+            'codigo' => 'required|string|max:10',
         ]);
     
-        $facultad->update($request->all());
+        // Buscar y actualizar la facultad
+        $facultad = Facultad::findOrFail($id);
+        $facultad->nombre = $request->input('nombre');
+        $facultad->codigo = $request->input('codigo');
+        $facultad->save();
     
-        return redirect()->route('facultades.index')
-                        ->with('success', 'Facultad actualizada exitosamente.');
+        // Redirigir con un mensaje de éxito
+        return redirect()->route('facultades.index')->with('success', 'Facultad actualizada con éxito');
     }
-
+    
     /**
      * Eliminar la facultad especificada de la base de datos.
      *
      * @param  \App\Models\Facultad  $facultad
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Facultad $facultad)
+    public function destroy($id)
     {
+        $facultad = Facultad::findOrFail($id);
         $facultad->delete();
     
         return redirect()->route('facultades.index')
-                        ->with('success', 'Facultad eliminada exitosamente.');
+                         ->with('success', 'Facultad eliminada con éxito');
     }
+    
 }

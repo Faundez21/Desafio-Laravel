@@ -1,4 +1,4 @@
-@extends('carreras.layout)
+@extends('carreras.layout')
 
 @section('content')
 <div class="container">

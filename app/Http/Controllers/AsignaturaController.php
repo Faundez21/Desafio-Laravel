@@ -83,20 +83,26 @@ class AsignaturaController extends Controller
      * @param  \App\Models\Asignatura  $asignatura
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Asignatura $asignatura)
-    {
-        $request->validate([
-            'nombre' => 'required',
-            'codigo' => 'required|unique:asignaturas,codigo,' . $asignatura->id,
-            'carrera_id' => 'required|exists:carreras,id',
-            'creditos' => 'required|integer',
-        ]);
-    
-        $asignatura->update($request->all());
-    
-        return redirect()->route('asignaturas.index')
-                        ->with('success', 'Asignatura actualizada exitosamente.');
-    }
+    public function update(Request $request, $id)
+{
+    // Validación de los datos del formulario
+    $request->validate([
+        'nombre' => 'required|string|max:255',
+        'codigo' => 'required|string|max:10',
+    ]);
+
+    // Buscar la asignatura por ID
+    $asignatura = Asignatura::findOrFail($id);
+
+    // Actualizar los datos de la asignatura
+    $asignatura->nombre = $request->input('nombre');
+    $asignatura->codigo = $request->input('codigo');
+    $asignatura->save();
+
+    // Redirigir con un mensaje de éxito
+    return redirect()->route('asignaturas.index')
+                    ->with('success', 'Asignatura actualizada con éxito');
+}
 
     /**
      * Eliminar la asignatura especificada de la base de datos.

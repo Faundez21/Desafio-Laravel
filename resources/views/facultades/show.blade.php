@@ -1,20 +1,20 @@
 @extends('facultades.layout')
 
-
 @section('content')
 <div class="container">
     <h1>Detalles de la Facultad</h1>
 
-    <div class="mb-3">
-        <label class="form-label">Nombre</label>
-        <p>{{ $facultad->nombre }}</p>
+    <div class="card">
+        <div class="card-header">
+            Facultad: {{ $facultad->nombre }}
+        </div>
+        <div class="card-body">
+            <p><strong>Código:</strong> {{ $facultad->codigo }}</p>
+            <p><strong>ID:</strong> {{ $facultad->id }}</p>
+
+        </div>
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">Código</label>
-        <p>{{ $facultad->codigo }}</p>
-    </div>
-
-    <a href="{{ route('facultades.index') }}" class="btn btn-secondary">Volver</a>
+    <a href="{{ route('facultades.index') }}" class="btn btn-primary mt-3">Volver</a>
 </div>
 @endsection

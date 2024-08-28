@@ -1,11 +1,29 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Laravel 8 CRUD Application </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laravel 8 CRUD Users</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            flex: 1;
+        }
+        footer {
+            background-color: #f1f1f1;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -29,12 +47,12 @@
     </div>
   </div>
 </nav>
+
 <div class="container">
     @yield('content')
 </div>
-   
-</body>
-<footer style="background-color: #f1f1f1; padding: 20px; text-align: center;">
+
+<footer>
     <p>&copy; 2024 TecnoSoft.</p>
     <nav>
         <a href="#home" style="margin-right: 15px; text-decoration: none; color: #333;">Home</a>
@@ -49,4 +67,5 @@
     </div>
 </footer>
 
+</body>
 </html>
