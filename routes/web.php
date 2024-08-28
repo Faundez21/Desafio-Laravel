@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CarreraController;
+use App\Http\Controllers\AsignaturaController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FacultadController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,3 +20,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('users', UserController::class);
+Route::resource('carreras', CarreraController::class);
+Route::resource('asignaturas', AsignaturaController::class);
+Route::resource('facultades', FacultadController::class);

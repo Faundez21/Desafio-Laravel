@@ -2,13 +2,17 @@
 @extends('users.layout')
  
 @section('content')
+
+
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
                 <h2>Laravel 8 CRUD Example f</h2>
             </div>
             <div class="pull-right">
+                <br>
                 <a class="btn btn-success" href="{{ route('users.create') }}"> Create New user</a>
+                <br>    
             </div>
         </div>
     </div>
@@ -20,6 +24,7 @@
     @endif
    
     <table class="table table-bordered">
+        <br>
         <tr>
             <th>No</th>
             <th>Name</th>
